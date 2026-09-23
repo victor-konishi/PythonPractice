@@ -7,6 +7,18 @@ def calc_damage (attack: int, defense: int) -> int:
         damage = 0
     return damage 
 
+def use_potion(player: dict) -> None:
+    if player["potions"] > 0:
+        player["potions"] -= 1
+        print(f"Avaliable potions: {player['potions']}")
+        player["life"] += 40
+        if player["life"] > player["max_life"]:
+            player["life"] = player["max_life"]
+            print(f"The player {player['name']} has exceeded the maximum value of life, life was set to: {player['life']}")
+        else: 
+            print("The player healed: 40")
+    else:
+        print(f"The player: '{player['name']}' has run out of potions")
 
 player = {"name": "Arturo", "life": 100, "attack": 100, "defense": 5, "max_life": 200, "potions": 5}
 
@@ -27,7 +39,7 @@ for enemy in enemies:
         option = input(' --- Choose an option: (atack / potion) ').lower()
         if option == "break":
             break
-        elif option == "atacar" or option == "a":
+        elif option == "attack" or option == "a":
             enemy_damage = calc_damage(player["attack"], enemy["defense"])
             if critic == 5:
                 enemy_damage = enemy_damage*2
