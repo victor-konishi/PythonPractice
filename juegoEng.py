@@ -1,7 +1,7 @@
 import random
 
 
-def calc_damage (attack: int, defense: int) -> return.int:
+def calc_damage (attack: int, defense: int) -> int:
     damage = attack - defense
     if damage < 0:
         damage = 0
